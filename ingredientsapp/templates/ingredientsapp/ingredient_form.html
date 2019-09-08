@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container box">
+    <div class="container">
+        <div class="row">
+            <h4>Create Ingredient</h4>
+        </div>
+        <div class="row">
+            <form method="post">{% csrf_token %}
+                <div class="row">
+                    <div class="col s6">
+                        {{form.name.label_tag}}
+                        {{form.name}}
+                    </div>
+                    <div class="col s6">
+                        {{form.article_number.label_tag}}
+                        {{form.article_number}}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        {{form.cost.label_tag}}
+                        {{form.cost}}
+                    </div>
+                    <div class="col s4">
+                        {{form.amount.label_tag}}
+                        {{form.amount}}
+                    </div>
+                    <div class="col s4">
+                        {{form.unit.label_tag}}
+                        {{form.unit}}
+                    </div>
+                </div>
+             </form>
+            <input  class="btn right" type="submit" value="Submit" />
+        </div>
+    </div>
+</div>
+
+{% endblock %}
