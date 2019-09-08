@@ -17,7 +17,7 @@ class Ingredient(models.Model):
     article_number = models.CharField(max_length=13, null=False, blank=False, unique=True)
     cost = models.DecimalField(max_digits=6, decimal_places=2)
     amount = models.PositiveIntegerField()
-    units = models.CharField(max_length=200, null=False, blank=False, choices=UNIT_TYPES)
+    unit = models.CharField(max_length=200, null=False, blank=False, choices=UNIT_TYPES)
 
 
     def __str__(self):
