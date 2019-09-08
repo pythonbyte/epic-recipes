@@ -1,0 +1,15 @@
+nav a {
+    color: #767676 !important;
+}
+
+select {
+    display: unset;
+}
+
+.box {
+    background-color: #fffffff5;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
