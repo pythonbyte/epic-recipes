@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # Apps
     'ingredientsapp',
+    'recipesapp',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
