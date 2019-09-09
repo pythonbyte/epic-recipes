@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container box">
+    <div class="container">
+        <div class="row">
+            <h5> Recipe Detail</h5>
+            <p> {{ object.name }}</p>
+        </div>
+        <div class="row">
+            {% for ri in object.ingredients.all %}
+                <p>{{ ri.ingredient.name }}- {{ ri.amount }} {{ ri.get_unit_display }} - {{ ri.cost }}</p>
+            {% endfor %}
+            <p> {{ object.recipe_cost }}</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
