@@ -1,17 +1,19 @@
 <nav class="z-depth-0 white">
   <div class="container">
     <div class="nav-wrapper">
-      <a href="/ingredients" class="brand-logo center">Epic Recipes</a>
+      <a href="/" class="brand-logo">Epic Recipes</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="{% url 'ingredient_list' %}" >Ingredients</a></li>
+        <li><a href="{% url 'recipe_list' %}"> Recipes </a></li>
+        <li><a href="{% url 'ingredient_list' %}"> Ingredients </a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
- <li><a href="#" >Approve Ingredients</a></li>
+ <li><a href="{% url 'recipe_list' %}" >Recipes</a></li>
+ <li><a href="{% url 'ingredient_list' %}"> Ingredients </a></li>
 </ul>
