@@ -5,13 +5,8 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('ingredientsapp', '0002_auto_20190907_2301'),
-    ]
+    dependencies = [("ingredientsapp", "0002_auto_20190907_2301")]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='ingredient',
-            options={'ordering': ('name',)},
-        ),
+        migrations.AlterModelOptions(name="ingredient", options={"ordering": ("name",)})
     ]

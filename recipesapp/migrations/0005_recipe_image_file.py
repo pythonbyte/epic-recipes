@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('recipesapp', '0004_auto_20190908_2253'),
-    ]
+    dependencies = [("recipesapp", "0004_auto_20190908_2253")]
 
     operations = [
         migrations.AddField(
-            model_name='recipe',
-            name='image_file',
-            field=models.ImageField(null=True, upload_to=''),
-        ),
+            model_name="recipe",
+            name="image_file",
+            field=models.ImageField(null=True, upload_to=""),
+        )
     ]

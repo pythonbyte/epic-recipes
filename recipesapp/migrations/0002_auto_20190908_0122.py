@@ -7,23 +7,48 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('ingredientsapp', '0002_auto_20190907_2301'),
-        ('recipesapp', '0001_initial'),
+        ("ingredientsapp", "0002_auto_20190907_2301"),
+        ("recipesapp", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='RecipeIngredient',
+            name="RecipeIngredient",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.PositiveIntegerField()),
-                ('unit', models.CharField(choices=[('G', 'Grams (g)'), ('KG', 'Kilograms (kg)'), ('L', 'Liter (L)'), ('CL', 'Centiliter (cl)')], max_length=200)),
-                ('ingredients', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ingredientsapp.Ingredient')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("amount", models.PositiveIntegerField()),
+                (
+                    "unit",
+                    models.CharField(
+                        choices=[
+                            ("G", "Grams (g)"),
+                            ("KG", "Kilograms (kg)"),
+                            ("L", "Liter (L)"),
+                            ("CL", "Centiliter (cl)"),
+                        ],
+                        max_length=200,
+                    ),
+                ),
+                (
+                    "ingredients",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="ingredientsapp.Ingredient",
+                    ),
+                ),
             ],
         ),
         migrations.AlterField(
-            model_name='recipe',
-            name='ingredients',
-            field=models.ManyToManyField(to='recipesapp.RecipeIngredient'),
+            model_name="recipe",
+            name="ingredients",
+            field=models.ManyToManyField(to="recipesapp.RecipeIngredient"),
         ),
     ]

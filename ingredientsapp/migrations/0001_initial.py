@@ -7,19 +7,37 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Ingredient',
+            name="Ingredient",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('article_number', models.CharField(max_length=13, unique=True)),
-                ('cost', models.DecimalField(decimal_places=2, max_digits=6)),
-                ('amount', models.PositiveIntegerField()),
-                ('units', models.CharField(choices=[('G', 'Grams (g)'), ('KG', 'Kilograms (kg)'), ('L', 'Liter (L)'), ('CL', 'Centiliter (cl)')], max_length=200)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("article_number", models.CharField(max_length=13, unique=True)),
+                ("cost", models.DecimalField(decimal_places=2, max_digits=6)),
+                ("amount", models.PositiveIntegerField()),
+                (
+                    "units",
+                    models.CharField(
+                        choices=[
+                            ("G", "Grams (g)"),
+                            ("KG", "Kilograms (kg)"),
+                            ("L", "Liter (L)"),
+                            ("CL", "Centiliter (cl)"),
+                        ],
+                        max_length=200,
+                    ),
+                ),
             ],
-        ),
+        )
     ]

@@ -7,18 +7,24 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ('ingredientsapp', '0002_auto_20190907_2301'),
-    ]
+    dependencies = [("ingredientsapp", "0002_auto_20190907_2301")]
 
     operations = [
         migrations.CreateModel(
-            name='Recipe',
+            name="Recipe",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('preparation_time', models.PositiveIntegerField()),
-                ('ingredients', models.ManyToManyField(to='ingredientsapp.Ingredient')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("preparation_time", models.PositiveIntegerField()),
+                ("ingredients", models.ManyToManyField(to="ingredientsapp.Ingredient")),
             ],
-        ),
+        )
     ]

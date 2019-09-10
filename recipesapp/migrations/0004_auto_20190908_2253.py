@@ -5,19 +5,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('recipesapp', '0003_recipeingredient_cost'),
-    ]
+    dependencies = [("recipesapp", "0003_recipeingredient_cost")]
 
     operations = [
         migrations.RenameField(
-            model_name='recipeingredient',
-            old_name='ingredients',
-            new_name='ingredient',
+            model_name="recipeingredient", old_name="ingredients", new_name="ingredient"
         ),
         migrations.AlterField(
-            model_name='recipeingredient',
-            name='cost',
+            model_name="recipeingredient",
+            name="cost",
             field=models.DecimalField(decimal_places=2, default=0, max_digits=6),
         ),
     ]
