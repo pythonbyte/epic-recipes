@@ -5,15 +5,37 @@
 {% block content %}
 <div class="container box">
     <div class="container">
-        <div class="row">
-            <h5> Recipe Detail</h5>
-            <p> {{ object.name }}</p>
+        <div class="valign-wrapper row">
+            <div class="col s10">
+                <h5 class="recipe-logo"> {{ object.name }}</h5>
+            </div>
+            <div class="col s2">
+                <i class="far fa-clock"></i> <span>{{recipe.preparation_time}} m</span>
+            </div>
         </div>
         <div class="row">
-            {% for ri in object.ingredients.all %}
-                <p>{{ ri.ingredient.name }}- {{ ri.amount }} {{ ri.get_unit_display }} - {{ ri.cost }}</p>
-            {% endfor %}
-            <p> {{ object.recipe_cost }}</p>
+            <div class="col s12">
+                <img src="{{ object.image_file.url }}" width="100%">
+            </div>
+        </div>
+        <div class="row">
+            <div class="s12">
+                <h5> Ingredients </h5>
+                <table>
+                    {% for ri in object.ingredients.all %}
+                        <tr style="border: 0">
+                           <td>{{ ri.ingredient.name }}</td>
+                           <td>{{ ri.amount }} {{ ri.get_unit_display }} </td>
+                           <td>€ {{ ri.cost }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr style="border: 0">
+                           <td><b> Total Cost:</b></td>
+                           <td></td>
+                           <td>€ {{  object.recipe_cost }}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
     </div>

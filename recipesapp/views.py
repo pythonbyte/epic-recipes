@@ -12,6 +12,7 @@ class RecipeList(ListView):
     model = Recipe
     paginate_by = 6
     ordering = ['-name']
+    template_name = 'home_page.html'
 
 
 class RecipeDetail(DetailView):
