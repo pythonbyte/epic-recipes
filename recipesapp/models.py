@@ -30,9 +30,10 @@ class RecipeIngredient(models.Model):
 
 
 class Recipe(models.Model):
-    name = models.CharField(max_length=200, null=False, blank=False)
+    name = models.CharField(max_length=200, null=False)
     preparation_time = models.PositiveIntegerField()
     ingredients = models.ManyToManyField(RecipeIngredient)
+    image_file = models.ImageField(null=True)
 
     def __str__(self):
         return f'{self.name}'
