@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container box">
+    <div class="row">
+        <div class="col s12" style="margin: 0px auto;">
+            <div class="container">
+                <h3 style="color: #530000cf;"> Login </h3>
+                <br>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                       {% for key, error in form.errors.items %}
+                           <small class="error-message" >{{error}}</small>
+                       {% endfor %}
+                    {% endif %}
+                    <div class="form-group">
+                        <div class="input-field">
+                            <label>Username</label>
+                            {{ form.username}}
+                        </div>
+                        <div class="input-field">
+                            <label>Password</label>
+                            {{ form.password}}
+                        </div>
+                    <button type="submit" class="btn btn-primary my-3">Login </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
