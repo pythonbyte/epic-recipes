@@ -9,6 +9,9 @@ verify_ssl = true
 django = "*"
 django-crispy-forms = "*"
 pillow = "*"
+dj-database-url = "*"
+gunicorn = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
