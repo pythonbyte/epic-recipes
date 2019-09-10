@@ -7,7 +7,11 @@
 <div class="container box">
     <div class="container">
         <div class="row">
-            <h4>Create Ingredient</h4>
+            {% if object %}
+                <h4> Update Ingredient </h4>
+            {% else %}
+                <h4> Create Ingredient </h4>
+            {% endif %}
         </div>
         <div class="row">
             <form method="post">{% csrf_token %}
@@ -36,7 +40,7 @@
                         {{form.unit}}
                     </div>
                 </div>
-            <input  class="btn right" type="submit" value="Submit" />
+                <input  class="btn right orange" type="submit" value="Submit" />
              </form>
         </div>
     </div>

@@ -18,7 +18,7 @@
                 </form>
             </div>
             <div class="col s6 offset-s2">
-                <a  class="btn right" href="{% url 'ingredient_new' %}">New Ingredient</a>
+                <a  class="btn right orange " href="{% url 'ingredient_new' %}">New Ingredient</a>
             </div>
 
         </div>
@@ -38,15 +38,13 @@
                     <tr>
                     <td>{{ ingredient.name }}</td>
                     <td>{{ ingredient.article_number }}</td>
-                    <td>$ {{ ingredient.cost }} per {{ ingredient.amount }} {{ ingredient.get_unit_display }}</td>
-                    <td><a href="{% url 'ingredient_edit' ingredient.id %}"><i class="fas fa-edit"></i></a></td>
+                    <td>€ {{ ingredient.cost }} per {{ ingredient.amount }} {{ ingredient.get_unit_display }}</td>
+                    <td><a href="{% url 'ingredient_edit' ingredient.id %}"><i class="material-icons">edit</i></a></td>
                     <td>
                         <form action="{% url 'ingredient_delete' ingredient.id %}" method="POST" > {% csrf_token %}
-                        <div class="col s12">
-                                <button class="btn-flat" type="submit">
+                                <button style="display: contents;" type="submit">
                                     <i class="material-icons center" style="color: red">clear</i>
                                 </button>
-                            </div>
                         </form>
                     </td>
                     </tr>
