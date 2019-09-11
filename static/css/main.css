@@ -39,6 +39,7 @@ img {
     background-color: white;
     padding-top: 1px;
 }
+@media only screen and (min-width: 600px) {
 .text-box{
-    margin-top: 150px
+    margin-top: 140px
 }

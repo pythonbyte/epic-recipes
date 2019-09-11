@@ -19,6 +19,12 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
+ <li><a href="/" class="brand-logo"><b class="logo">EPIC</b><span class="recipe-logo">Recipes</span></a></li>
  <li><a href="{% url 'recipe_list' %}" >Recipes</a></li>
  <li><a href="{% url 'ingredient_list' %}"> Ingredients </a></li>
+  {% if request.user.is_authenticated %}
+    <li><a href="{% url 'logout' %}"> Logout </a></li>
+  {% else %}
+    <li><a href="{% url 'login' %}"> Login </a></li>
+  {% endif %}
 </ul>
