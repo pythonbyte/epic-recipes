@@ -16,52 +16,59 @@
         <form method="post" enctype="multipart/form-data">{% csrf_token %}
             <div class="row">
                 <div class="col s6">
-                    {{form.name.label_tag}}
-                    {{form.name}}
-
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    {{ form.name.errors }}
                 </div>
                  <div class="col s6">
-                    {{form.preparation_time.label_tag}}
-                    {{form.preparation_time}}
+                    {{ form.preparation_time.label_tag }}
+                    {{ form.preparation_time }}
+                    {{ form.preparation_time.errors }}
                 </div>
             </div>
-                                <div class="row">
-                         <div class="file-field col s6">
-                          <div class="btn">
-                            <span>File</span>
-                            <input type="file" name="image_file">
-                          </div>
-                          <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
-                          </div>
-                        <small class="error-message" >{{ form.image_file.errors }}</small>
-                        </div>
-                    </div>
             <div class="row">
-                   <table>
-                    {{ formset.management_form|crispy }}
-                        {% for form in formset %}
-                                <tr class="{% cycle 'row1' 'row2' %} formset_row-{{ formset.prefix }}">
-                                    {% for field in form.visible_fields %}
-                                    <td>
-                                        {# Include the hidden fields in the form #}
-                                        {% if forloop.first %}
-                                            {% for hidden in form.hidden_fields %}
-                                                {{ hidden }}
-                                            {% endfor %}
-                                        {% endif %}
-                                        {{ field.errors.as_ul }}
-                                        {{ field|as_crispy_field }}
-                                        {% if formset.can_delete %}
-                                            {{ form.DELETE }}
-                                        {% endif %}
-                                    </td>
-                                    {% endfor %}
-                                </tr>
+                <div class="file-field col s6">
+                  <div class="btn">
+                    <span>File</span>
+                    <input type="file" name="image_file">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                <small class="error-message" >{{ form.image_file.errors }}</small>
+                </div>
+            </div>
+            <div class="row">
+                {% if form.errors %}
+                    {% for error, message in form.errors.items %}
+                        {% for err in message %}
+                            <p style="color: red;">{{ err }}</p>
                         {% endfor %}
-                    </table>
-                    <br>
-                    <input  class="btn right" type="submit" value="Submit" />
+                    {% endfor %}
+                {% endif %}
+               <table>
+                {{ formset.management_form|crispy }}
+                    {% for form in formset %}
+                            <tr class="{% cycle 'row1' 'row2' %} formset_row-{{ formset.prefix }}">
+                                {% for field in form.visible_fields %}
+                                <td>
+                                    {# Include the hidden fields in the form #}
+                                    {% if forloop.first %}
+                                        {% for hidden in form.hidden_fields %}
+                                            {{ hidden }}
+                                        {% endfor %}
+                                    {% endif %}
+                                    {{ field|as_crispy_field }}
+                                    {% if formset.can_delete %}
+                                        {{ form.DELETE }}
+                                    {% endif %}
+                                </td>
+                                {% endfor %}
+                            </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                <input  class="btn right" type="submit" value="Submit" />
             </div>
         </form>
     </div>

@@ -1,5 +1,6 @@
+from django import forms
 from django.db import transaction
-from django.db.models import Q
+from django.forms.utils import ErrorList
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -37,11 +38,17 @@ class RecipeCreate(CreateView):
     def form_valid(self, form):
         context = self.get_context_data()
         ingredients = context["formset"]
+
         with transaction.atomic():
-            self.object = form.save()
             if ingredients.is_valid():
+                self.object = form.save()
                 save_objects = ingredients.save()
                 self.object.ingredients.set(save_objects)
+            else:
+                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList(
+                    [ingredients.errors[0]]
+                )
+                return self.form_invalid(form)
         return super(RecipeCreate, self).form_valid(form)
 
 
@@ -63,12 +70,18 @@ class RecipeUpdate(UpdateView):
     def form_valid(self, form):
         context = self.get_context_data()
         ingredients = context["formset"]
+
         with transaction.atomic():
             if ingredients.is_valid():
+                self.object = form.save()
                 save_objects = ingredients.save()
-                for i in save_objects:
-                    self.object.ingredients.add(i)
-        return super(RecipeUpdate, self).form_valid(form)
+                self.object.ingredients.set(save_objects)
+            else:
+                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList(
+                    [ingredients.errors[0]]
+                )
+                return self.form_invalid(form)
+        return super(RecipeCreate, self).form_valid(form)
 
 
 class RecipeDelete(DeleteView):
