@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      DB_NAME: ''
+      DB_HOST: ''
+      DB_USER: ''
+      DB_PASSWORD: ''
+      SECRET_KEY: ''
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
