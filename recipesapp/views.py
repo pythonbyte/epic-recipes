@@ -81,7 +81,7 @@ class RecipeUpdate(UpdateView):
                     [ingredients.errors[0]]
                 )
                 return self.form_invalid(form)
-        return super(RecipeCreate, self).form_valid(form)
+        return super(RecipeUpdate, self).form_valid(form)
 
 
 class RecipeDelete(DeleteView):
