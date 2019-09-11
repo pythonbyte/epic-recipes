@@ -11,6 +11,10 @@ select {
     display: unset;
 }
 
+img {
+    max-height: fit-content;
+}
+
 .logo {
     color: #fd8890;
 }

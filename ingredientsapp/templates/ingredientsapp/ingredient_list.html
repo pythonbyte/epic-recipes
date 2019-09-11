@@ -20,37 +20,40 @@
             <div class="col s6 offset-s2">
                 <a  class="btn right orange " href="{% url 'ingredient_new' %}">New Ingredient</a>
             </div>
-
         </div>
         <div class="row">
-            <table border="1">
-                <thead>
-                    <tr>
-                    <th>Name</th>
-                    <th>Article Number</th>
-                    <th>Cost</th>
-                    <th></th>
-                    <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for ingredient in object_list %}
-                    <tr>
-                    <td>{{ ingredient.name }}</td>
-                    <td>{{ ingredient.article_number }}</td>
-                    <td>€ {{ ingredient.cost }} per {{ ingredient.amount }} {{ ingredient.get_unit_display }}</td>
-                    <td><a href="{% url 'ingredient_edit' ingredient.id %}"><i class="material-icons">edit</i></a></td>
-                    <td>
-                        <form action="{% url 'ingredient_delete' ingredient.id %}" method="POST" > {% csrf_token %}
-                                <button style="display: contents;" type="submit">
-                                    <i class="material-icons center" style="color: red">clear</i>
-                                </button>
-                        </form>
-                    </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            {% if object_list %}
+                <table border="1">
+                    <thead>
+                        <tr>
+                        <th>Name</th>
+                        <th>Article Number</th>
+                        <th>Cost</th>
+                        <th></th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ingredient in object_list %}
+                        <tr>
+                        <td>{{ ingredient.name }}</td>
+                        <td>{{ ingredient.article_number }}</td>
+                        <td>€ {{ ingredient.cost }} per {{ ingredient.amount }} {{ ingredient.get_unit_display }}</td>
+                        <td><a href="{% url 'ingredient_edit' ingredient.id %}"><i class="material-icons">edit</i></a></td>
+                        <td>
+                            <form action="{% url 'ingredient_delete' ingredient.id %}" method="POST" > {% csrf_token %}
+                                    <button style="display: contents;" type="submit">
+                                        <i class="material-icons center" style="color: red">clear</i>
+                                    </button>
+                            </form>
+                        </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h4> No Ingredients to show </h4>
+            {% endif %}
         </div>
          <div class="container">
             {% if is_paginated %}

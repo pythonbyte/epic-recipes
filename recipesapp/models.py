@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.db.models.signals import post_save
 from ingredientsapp.models import Ingredient
 from .utils import convert_unit
 
@@ -29,6 +29,16 @@ class RecipeIngredient(models.Model):
             ingredient.cost, self.amount, ingredient.amount, self.unit, ingredient.unit
         )
         super(RecipeIngredient, self).save(*args, **kwargs)
+
+
+def update_recipe_ingredients(sender, **kwargs):
+    instance = kwargs["instance"]
+    if instance:
+        for i in instance.recipeingredient_set.all():
+            i.save()
+
+
+post_save.connect(update_recipe_ingredients, sender=Ingredient)
 
 
 class Recipe(models.Model):
