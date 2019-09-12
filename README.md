@@ -30,5 +30,21 @@ $ python manage.py createsuperuser
 $ python manage.py runserver
 ```
 
+# Using Docker
+
+If you prefer to use docker to run the project after cloning the repository, run
+this command to build the image and run the container.
+
+``` docker-compose up --build ```
+
 Remember that for the project fully work, you must configure the env vars from 
 the database and the AWS keys.
+
+
+# Testing
+
+To test the application use:
+
+```$ python manage.py test```
+
+
