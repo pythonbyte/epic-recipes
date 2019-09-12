@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.forms.utils import ErrorList
 from django.views.generic import ListView, DetailView
@@ -52,7 +53,8 @@ class RecipeCreate(CreateView):
         return super(RecipeCreate, self).form_valid(form)
 
 
-class RecipeUpdate(UpdateView):
+class RecipeUpdate(LoginRequiredMixin, UpdateView):
+    login_url = "/login"
     form_class = RecipeForm
     model = Recipe
     success_url = reverse_lazy("recipe_list")
@@ -84,6 +86,7 @@ class RecipeUpdate(UpdateView):
         return super(RecipeUpdate, self).form_valid(form)
 
 
-class RecipeDelete(DeleteView):
+class RecipeDelete(LoginRequiredMixin, DeleteView):
+    login_url = "/login"
     model = Recipe
     success_url = reverse_lazy("recipe_list")
