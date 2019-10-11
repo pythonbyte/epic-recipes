@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
 django = "*"
@@ -11,11 +12,14 @@ django-crispy-forms = "*"
 pillow = "*"
 dj-database-url = "*"
 gunicorn = "*"
-psycopg2 = "*"
 boto = "*"
 boto3 = "*"
 django-storages = "*"
 whitenoise = "*"
+pipfile = "*"
+psycopg2-binary = "*"
+django-debug-toolbar = "*"
+django-redis = "*"
 
 [requires]
 python_version = "3.7"
