@@ -6,13 +6,6 @@ This project is a challenge for a job opening. It's a Recipe and Ingredients pla
 
 Deployed app at Heroku: https://epic-recipes.herokuapp.com/
 
-In order to access the project and test it I created a login and password:
-
-```
-username: epicuser
-password: epic123456
-```
-
 
 # Installing
 
